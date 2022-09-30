@@ -6,7 +6,7 @@
 
  variables:
    imageName: 'pipelines-javascript-docker'
-   dev_environment: $(dev_environment)
+   dev_environment: 'dev'
  steps:
  - task: Docker@2
    displayName: Build an image
