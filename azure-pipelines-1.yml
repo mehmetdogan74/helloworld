@@ -7,7 +7,8 @@ jobs:
     runOnce:            
       deploy: 
         steps:       
-        - script: docker ps
+        - script: hostname
+
 - deployment: deployDB
   environment: dev
   pool:
@@ -16,4 +17,4 @@ jobs:
     runOnce:
       deploy: 
         steps:       
-        - script: docker ps
+        - script: ps -fe
