@@ -2,18 +2,18 @@ jobs:
 - deployment:
   environment: dev
   pool:
-    name: sh-prod-pool
+    name: Azure Pipelines
   strategy:                 
     runOnce:            
       deploy: 
         steps:       
-        - script: kubectl apply ... 
+        - script: docker ps
 - deployment: deployDB
   environment: dev
   pool:
-    name: sh-prod-pool
+    name: Azure Pipelines
   strategy:                 
     runOnce:
       deploy: 
         steps:       
-        - script: kubectl apply ... 
+        - script: docker ps
