@@ -11,8 +11,6 @@ jobs:
 
 - deployment: deployDB
   environment: dev
-  pool:
-    name: Azure Pipelines
   strategy:                 
     runOnce:
       deploy: 
