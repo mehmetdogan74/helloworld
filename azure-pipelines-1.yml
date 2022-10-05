@@ -17,4 +17,4 @@ jobs:
     runOnce:
       deploy: 
         steps:       
-        - script: ps -fe
+        - script: hostname
