@@ -1,19 +1,18 @@
- stages:
-   - stage: DeployLive
-     displayName: Deploy to Live
-     jobs:
-       - deployment: Deploy
-         environment: Live
-         pool:
-          name: Live Cluster
-         strategy:                 
-          runOnce:
-            deploy: 
-              steps:       
+pool:
+   name: Live Cluster
+stages:
+  - stage: DeployLive
+    displayName: Deploylive
+    jobs:
+    - deployment: Deploy
+      environment: Live
+      strategy:                 
+        runOnce:
+          deploy: 
+            steps:       
             - script: |
-                hostname
-                docker ps
-                 
-              displayName: Testing live cluster
+              hostname
+              docker ps
+               displayName: Testing live cluster
 
 
