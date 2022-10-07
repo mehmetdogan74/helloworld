@@ -11,6 +11,6 @@ stages:
           deploy: 
             steps:       
             - script: |
-              hostname
-              docker ps
-               displayName: Testing live cluster
+               hostname
+               docker ps
+              displayName: Testing live cluster
