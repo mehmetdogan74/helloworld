@@ -4,8 +4,11 @@ stages:
   - stage: DeployLive
     displayName: Deploylive
     jobs:
-    - deployment: Deploy
-      environment: geosoltest
+    - deployment: deploymentjob
+      displayName: Deployment Job
+      environment:
+       name: Live
+       resourceType: VirtualMachine
       strategy:                 
         runOnce:
           deploy: 
