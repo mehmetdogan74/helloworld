@@ -7,9 +7,7 @@ stages:
     - deployment: Deploy
       environment:
        name: Live
-       resourceName: vchgisliveapp3
-       resourceType: VirtualMachine
-       tags: Console
+       resourceType: vchgisliveapp3
       strategy:                 
         runOnce:
           deploy: 
