@@ -5,7 +5,10 @@ stages:
     displayName: Deploylive
     jobs:
     - deployment: Deploy
-      environment: Live.vchgisliveapp2
+      environment:
+       name: Live
+       resourceType: VirtualMachine
+       tags: Console
       strategy:                 
         runOnce:
           deploy: 
