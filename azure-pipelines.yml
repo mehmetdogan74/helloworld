@@ -1,5 +1,6 @@
 jobs:
 - deployment: Deploy
+  environment: Live
   pool:
     name: Live Cluster
   strategy:                 
