@@ -2,7 +2,7 @@ jobs:
 - deployment:
   environment: dev
   pool:
-    name: Azure Pipelines
+    name: Staging
   strategy:                 
     runOnce:            
       deploy: 
