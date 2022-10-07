@@ -5,9 +5,7 @@ stages:
     displayName: Deploylive
     jobs:
     - deployment: Deploy
-      environment:
-       name: Live
-       resourceType: vchgisliveapp3
+      environment: geosoltest
       strategy:                 
         runOnce:
           deploy: 
