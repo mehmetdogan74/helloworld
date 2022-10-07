@@ -1,15 +1,13 @@
 jobs:
 - deployment: Deploy
-  environment: dev
   pool:
-    name: Staging
+    name: Live Cluster
   strategy:                 
     runOnce:
       deploy: 
         steps:       
         - script: |
-           cd /home/dorset/geosolutions/docker-nginx-hello-world
-           docker run -p 3333:9090 -d dockerbogo/docker-nginx-hello-world
+           hostname
            docker ps
-          displayName: Testing again
+          displayName: Testing live cluster
 
