@@ -14,5 +14,3 @@ stages:
               hostname
               docker ps
                displayName: Testing live cluster
-
-
