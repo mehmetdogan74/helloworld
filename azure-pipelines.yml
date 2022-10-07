@@ -1,15 +1,24 @@
- trigger:
- - main
+jobs:
+- deployment: Build
+  environment: dev
+  pool:
+    name: Staging
+  strategy:                 
+    runOnce:            
+      deploy: 
+        steps:       
+        - script: hostname
 
- pool:
-   vmImage: 'ubuntu-latest' 
+- deployment: Deploy
+  environment: dev
+  pool:
+    name: Staging
+  strategy:                 
+    runOnce:
+      deploy: 
+        steps:       
+        - script: |
+           hostname
+           docker ps
+          displayName: Testing again
 
- variables:
-   imageName: 'pipelines-javascript-docker'
- steps:
- - task: Docker@2
-   displayName: Build an image
-   inputs:
-     repository: $(imageName)
-     command: build
-     Dockerfile: app/Dockerfile
