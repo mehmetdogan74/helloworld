@@ -5,7 +5,7 @@ stages:
     displayName: Deploylive
     jobs:
     - deployment: Deploy
-      environment: Live
+      environment: Live.vchgisliveapp2
       strategy:                 
         runOnce:
           deploy: 
