@@ -17,6 +17,6 @@ stages:
                hostname
                date
                whoami
-               cd docker-geoserver
-               git status
+               ls -al /home/dorset
+               docker ps
               displayName: Testing live cluster
