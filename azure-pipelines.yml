@@ -1,14 +1,14 @@
 stages:
   - stage: CommitLatestDockerChanges
     displayName: DockerChanges
-    pool:
-     name: Staging
     jobs:
     - deployment: gitcommit
       displayName: Git Commit
       environment:
        name: dev
        resourceType: VirtualMachine
+      pool:
+       name: Staging
       strategy:                 
         rolling:
           maxParallel: 1
@@ -22,14 +22,14 @@ stages:
               displayName: Commit Latest Changes
   - stage: PullLatestChanges
     displayName: Pull Changes
-    pool:
-     name: Live Cluster
     jobs:
     - deployment: pulllatestchanges
       displayName: Pull Latest Changes
       environment:
        name: Live
        resourceType: VirtualMachine
+      pool:
+       name: Live Cluster
       strategy:                 
         rolling:
           maxParallel: 1
