@@ -1,11 +1,34 @@
 pool:
    name: Live Cluster
 stages:
-  - stage: DeployLive
-    displayName: Deploylive
+  - stage: CommitLatestDockerChanges
+    displayName: DockerChanges
+    pool:
+     name: Staging
     jobs:
-    - deployment: deploymentjob
-      displayName: Deployment Job
+    - deployment: gitcommit
+      displayName: Git Commit
+      environment:
+       name: dev
+       resourceType: VirtualMachine
+      strategy:                 
+        rolling:
+          maxParallel: 1
+          deploy: 
+            steps:       
+            - script: |
+               hostname
+               date
+               cd /home/dorset/docker-geoserver
+               git status
+              displayName: Commit Latest Changes
+  - stage: PullLatestChanges
+    displayName: Pull Changes
+    pool:
+     name: Live Cluster
+    jobs:
+    - deployment: pulllatestchanges
+      displayName: Pull Latest Changes
       environment:
        name: Live
        resourceType: VirtualMachine
@@ -22,9 +45,8 @@ stages:
                rm -rf /home/dorset/geosolutions/Docker%20Configuration/
                git clone https://jovg65mehr5gj3h6e4sjezzhgvzeljnxwu2jbc5c4dmhsz5ckvrq:3RDP.GEOSOLUTIONS@dev.azure.com/dccgisvsts/Docker%20Configuration/_git/Docker%20Configuration
                cd Docker%20Configuration/
-               git fetch --all
                git checkout master
                git status
                cat .gitignore
                ls -al
-              displayName: Testing live cluster
+              displayName: Git Pull Latest Changes
