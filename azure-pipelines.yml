@@ -17,6 +17,7 @@ stages:
                hostname
                date
                whoami
+               find /home/dorset/ -name docker-compose.yml
                cd /home/dorset/docker-geoserver
                ls -al /home/dorset
                docker ps
