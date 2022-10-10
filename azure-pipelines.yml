@@ -1,14 +1,13 @@
 stages:
   - stage: CommitLatestDockerChanges
     displayName: DockerChanges
+    pool: Staging
     jobs:
     - deployment: gitcommit
       displayName: Git Commit
       environment:
        name: dev
        resourceType: VirtualMachine
-      pool:
-       name: Staging
       strategy:                 
         rolling:
           maxParallel: 1
@@ -20,16 +19,16 @@ stages:
                cd /home/dorset/docker-geoserver
                git status
               displayName: Commit Latest Changes
+
   - stage: PullLatestChanges
     displayName: Pull Changes
+    pool: Live Cluster
     jobs:
     - deployment: pulllatestchanges
       displayName: Pull Latest Changes
       environment:
        name: Live
        resourceType: VirtualMachine
-      pool:
-       name: Live Cluster
       strategy:                 
         rolling:
           maxParallel: 1
