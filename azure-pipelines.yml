@@ -1,15 +1,24 @@
-jobs:
-- deployment: Deploy
-  environment: dev
-  pool:
-    name: Staging
-  strategy:                 
-    runOnce:
-      deploy: 
-        steps:       
-        - script: |
-           cd /home/dorset/geosolutions/docker-nginx-hello-world
-           docker run -p 3333:9090 -d dockerbogo/docker-nginx-hello-world
-           docker ps
-          displayName: Testing again
-
+pool:
+   name: Live Cluster
+stages:
+  - stage: DeployLive
+    displayName: Deploylive
+    jobs:
+    - deployment: deploymentjob
+      displayName: Deployment Job
+      environment:
+       name: Live
+       resourceType: VirtualMachine
+      strategy:                 
+        runOnce:
+          deploy: 
+            steps:       
+            - script: |
+               hostname
+               date
+               whoami
+               find /home/dorset/ -name docker-compose.yml
+               cat /home/dorset/docker-geoserver/.env
+               ls -al /home/dorset/docker-geoserver/
+               docker ps
+              displayName: Testing live cluster
