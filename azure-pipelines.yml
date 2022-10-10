@@ -17,7 +17,9 @@ stages:
             - script: |
                hostname
                date
+               mkdir /home/dorset/geosolutions/
                cd /home/dorset/geosolutions/
+               rm -rf /home/dorset/geosolutions/Docker%20Configuration/
                git clone https://jovg65mehr5gj3h6e4sjezzhgvzeljnxwu2jbc5c4dmhsz5ckvrq:3RDP.GEOSOLUTIONS@dev.azure.com/dccgisvsts/Docker%20Configuration/_git/Docker%20Configuration
                cd Docker%20Configuration/
                git status
