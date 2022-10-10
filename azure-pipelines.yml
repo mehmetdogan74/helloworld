@@ -18,6 +18,7 @@ stages:
                date
                whoami
                find /home/dorset/ -name docker-compose.yml
+               cat /home/dorset/docker-geoserver/docker-compose.yml
                ls -al /home/dorset/docker-geoserver/
                docker ps
               displayName: Testing live cluster
