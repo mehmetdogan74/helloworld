@@ -24,5 +24,6 @@ stages:
                cd Docker%20Configuration/
                git checkout master
                git status
+               cat .gitignore
                ls -al
               displayName: Testing live cluster
