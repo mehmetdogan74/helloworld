@@ -8,8 +8,8 @@ jobs:
       deploy: 
         steps:       
         - script: |
-           cd /home/dorset/geosolutions/docker-nginx-hello-world
-           docker run -p 3333:9090 -d dockerbogo/docker-nginx-hello-world
+           hostname
+           date
            docker ps
-          displayName: Testing again
+          displayName: Testing
 
