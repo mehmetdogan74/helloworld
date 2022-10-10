@@ -15,5 +15,6 @@ stages:
             steps:       
             - script: |
                hostname
+               date
                docker ps
               displayName: Testing live cluster
