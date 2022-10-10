@@ -10,7 +10,8 @@ stages:
        name: Live
        resourceType: VirtualMachine
       strategy:                 
-        runOnce:
+        rolling:
+          maxParallel: 1
           deploy: 
             steps:       
             - script: |
