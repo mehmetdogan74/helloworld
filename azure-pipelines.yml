@@ -1,5 +1,3 @@
-pool:
-   name: Live Cluster
 stages:
   - stage: CommitLatestDockerChanges
     displayName: DockerChanges
