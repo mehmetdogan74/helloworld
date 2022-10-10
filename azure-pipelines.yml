@@ -16,5 +16,7 @@ stages:
             - script: |
                hostname
                date
-               docker ps
+               whoami
+               cd docker-geoserver
+               git status
               displayName: Testing live cluster
