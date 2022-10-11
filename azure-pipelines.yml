@@ -1,11 +1,11 @@
 pool:
    name: Live Cluster
 stages:
-  - stage: DeployLive
-    displayName: Deploylive
+  - stage: pulldatadirchanges
+    displayName: Pull Datadir Changes on Live Servers
     jobs:
-    - deployment: deploymentjob
-      displayName: Deployment Job
+    - deployment: pulldatadir
+      displayName: Pull Datadir Changes
       environment:
        name: Live
        resourceType: VirtualMachine
@@ -16,15 +16,12 @@ stages:
             steps:       
             - script: |
                hostname
-               date
-               mkdir -p /home/dorset/geosolutions/
-               cd /home/dorset/geosolutions/
-               rm -rf /home/dorset/geosolutions/Docker%20Configuration/
-               git clone https://jovg65mehr5gj3h6e4sjezzhgvzeljnxwu2jbc5c4dmhsz5ckvrq:3RDP.GEOSOLUTIONS@dev.azure.com/dccgisvsts/Docker%20Configuration/_git/Docker%20Configuration
-               cd Docker%20Configuration/
+               cd /mnt/data_dir/
+               git add .
+               git commit -a
+               git stash
                git fetch --all
-               git checkout master
+               git checkout --track dorset/datadir-test
+               git pull dorset datadir-test
                git status
-               cat .gitignore
-               ls -al
               displayName: Testing live cluster
