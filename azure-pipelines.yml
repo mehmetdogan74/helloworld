@@ -1,5 +1,5 @@
 jobs:
-- deployment: Deploy
+- deployment: geoserverdatadir
   environment: dev
   pool:
     name: Staging
@@ -9,7 +9,10 @@ jobs:
         steps:       
         - script: |
            hostname
-           date
-           docker ps
-          displayName: Testing
+           cd /mnt/data_dir
+           git checkout --track dorset/datadir-test
+           git add .
+           git commit -m "`date` datadir test"
+           git push -u dorset datadir-test
+          displayName: GeoServer Datadir Save Latest Changes
 
